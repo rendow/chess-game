@@ -225,7 +225,19 @@
 
     .sq.check { background: radial-gradient(ellipse at center, #ff5a5a 0%, #cc0000 60%, transparent 100%) !important; }
 
-    .piece { pointer-events: none; }
+    .piece   { pointer-events: none; }
+    .piece-w {
+      color: #fff;
+      text-shadow:
+        -1.5px -1.5px 0 #2a2a2a,  1.5px -1.5px 0 #2a2a2a,
+        -1.5px  1.5px 0 #2a2a2a,  1.5px  1.5px 0 #2a2a2a;
+    }
+    .piece-b {
+      color: #1c1c1c;
+      text-shadow:
+        -1px -1px 0 rgba(255,255,255,.35),  1px -1px 0 rgba(255,255,255,.35),
+        -1px  1px 0 rgba(255,255,255,.35),  1px  1px 0 rgba(255,255,255,.35);
+    }
 
     /* Legal move indicators */
     .dot {
@@ -691,7 +703,7 @@ function updateDisplay() {
     const p = game.get(sq);
     if (p) {
       const span = document.createElement('span');
-      span.className = 'piece';
+      span.className = 'piece piece-' + p.color;
       span.textContent = UNICODE[(p.color === 'w' ? 'w' : 'b') + p.type.toUpperCase()] || '?';
       cell.appendChild(span);
     }
